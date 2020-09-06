@@ -98,6 +98,70 @@ $(function () {
 
   });
 
+  $("#order-create-form").submit(function (event) {
+    event.preventDefault();
+    const order = {};
+    $.each($(this).serializeArray(), function () {
+      order[this.name] = this.value;
+    });
+
+    $.ajax({
+      type: "POST",
+      url: "../Controllers/HomeController.php?action=store",
+      dataType: "JSON",
+      data: { order },
+      success: function (response) {
+
+        response === true
+          ? Toast.fire({
+            icon: 'success',
+            title: 'Pedido cadastrado com succeso'
+          })
+          :
+          Toast.fire({
+            icon: 'error',
+            title: 'Erro ao cadastrar pedido, verifique os dados'
+          })
+
+        getOrders();
+        $('#order-add-modal').modal('hide');
+        $('#order-create-form').trigger("reset");
+      }
+    })
+  });
+
+  $("#order-form").submit(function (event) {
+    event.preventDefault();
+    const order = {};
+    $.each($(this).serializeArray(), function () {
+      order[this.name] = this.value;
+    });
+
+    $.ajax({
+      type: "POST",
+      url: "../Controllers/HomeController.php?action=update",
+      dataType: "JSON",
+      data: { order },
+      success: function (response) {
+
+        response === true
+          ? Toast.fire({
+            icon: 'success',
+            title: 'Pedido editado com succeso'
+          })
+          :
+          Toast.fire({
+            icon: 'error',
+            title: 'Erro ao editar pedido, verifique os dados'
+          })
+
+        getOrders();
+        $('#order-modal').modal('hide');
+        $('#order-form').trigger("reset");
+      }
+    })
+  });
+
   getOrders();
 });
 
@@ -174,7 +238,7 @@ function handleDelete(orderId) {
               icon: 'error',
               title: 'Erro ao excluir pedido, verifique os dados'
             })
-            getOrders();
+          getOrders();
         }
       })
 
@@ -182,17 +246,21 @@ function handleDelete(orderId) {
   })
 }
 
-
 function getOrders() {
   $('#orders-table tbody').empty();
-
   $.ajax({
     type: "GET",
     url: "../Controllers/HomeController.php?action=index",
     dataType: "JSON",
     success: function (response) {
-      response.map(o => {
-        let order = `<tr>
+      if (response.length === 0) {
+        $('#orders-table').addClass('d-none');
+        $('#empty-orders').removeClass('d-none');
+      } else {
+        $('#orders-table').removeClass('d-none');
+        $('#empty-orders').addClass('d-none');
+        response.map(o => {
+          let order = `<tr>
       <td>
         ${o.id}
       </td>
@@ -206,91 +274,24 @@ function getOrders() {
         ${o.destination_street}, ${o.destination_number}
       </td>
       <td>
-        <button class="btn btn-info" onclick="handleDetailModal(${o.id})">
-          Detalhes
+        <button class="btn" onclick="handleDetailModal(${o.id})">
+          <img class="img-fluid icon-btn" src="../../assets/images/edit.png" />
         </button>
-        <button class="btn btn-danger" onclick="handleDelete(${o.id})">
-          Excluir
+        <button class="btn" onclick="handleDelete(${o.id})">
+          <img class="img-fluid icon-btn" src="../../assets/images/delete.png" />
         </button>
       </td>
       </tr>`
 
-        $('#orders-table tbody').append(order)
-      })
+          $('#orders-table tbody').append(order)
+        })
+      }
     }
   })
 }
 
-function handleSubmitOrder() {
-  $("#order-create-form").submit(function (event) {
-    event.preventDefault();
-    const order = {};
-    $.each($(this).serializeArray(), function () {
-      order[this.name] = this.value;
-    });
 
-    console.log(order);
 
-    $.ajax({
-      type: "POST",
-      url: "../Controllers/HomeController.php?action=store",
-      dataType: "JSON",
-      data: { order },
-      success: function (response) {
 
-        response === true
-          ? Toast.fire({
-            icon: 'success',
-            title: 'Pedido cadastrado com succeso'
-          })
-          :
-          Toast.fire({
-            icon: 'error',
-            title: 'Erro ao cadastrar pedido, verifique os dados'
-          })
 
-        getOrders();
-        $('#order-add-modal').modal('hide');
-        $('#order-create-form').trigger("reset");
-      }
-    })
-  });
 
-}
-
-function handleOrderUpdate() {
-  $("#order-form").submit(function (event) {
-    event.preventDefault();
-    const order = {};
-    $.each($(this).serializeArray(), function () {
-      order[this.name] = this.value;
-    });
-
-    console.log(order);
-
-    $.ajax({
-      type: "POST",
-      url: "../Controllers/HomeController.php?action=update",
-      dataType: "JSON",
-      data: { order },
-      success: function (response) {
-
-        response === true
-          ? Toast.fire({
-            icon: 'success',
-            title: 'Pedido alterado com succeso'
-          })
-          :
-          Toast.fire({
-            icon: 'error',
-            title: 'Erro ao alterar pedido, verifique os dados'
-          })
-
-        getOrders();
-        $('#order-modal').modal('hide');
-        $('#order-form').trigger("reset");
-      }
-    })
-  });
-
-}

@@ -1,10 +1,10 @@
 <?php require_once '../Template/header.php'; ?>
 
 <div class="content container">
-  <h2 class="my-4">
-    Lista de pedidos cadastrados
-  </h2>
-  <table id="orders-table" class="table">
+  <h1 class="text-center my-4">
+    Lista de pedidos
+  </h1>
+  <table id="orders-table" class="table text-center">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -18,6 +18,11 @@
 
     </tbody>
   </table>
+
+  <div id="empty-orders" class="d-none my-5">
+    <img src="<?php echo BASE_URL; ?>/assets/images/empty-table.png" class="img-fluid mx-auto d-block w-25" alt="Empty orders" loading="lazy">
+    <h2 class="text-center my-4">Não há pedidos cadastrados</h2>
+  </div>
 
   <div class="modal fade" id="order-modal" tabindex="-1">
     <div class="modal-dialog modal-lg">
@@ -35,11 +40,11 @@
             <div class="form-row ">
               <div class="form-group col-md-6">
                 <label for="nameInput">Nome</label>
-                <input type="text" class="form-control" name="nameInput" id="nameInput">
+                <input required type="text" class="form-control" name="nameInput" id="nameInput">
               </div>
               <div class="form-group col-md-6">
                 <label for="phoneInput">Telefone</label>
-                <input name="phoneInput" type="text" class="form-control phone" id="phoneInput">
+                <input required name="phoneInput" type="text" class="form-control phone" id="phoneInput">
               </div>
             </div>
             <hr class="my-4">
@@ -47,28 +52,28 @@
             <div class="form-row ">
               <div class="form-group col-md-3">
                 <label for="originCepUpdate">CEP</label>
-                <input name="originCep" type="text" class="form-control cep" id="originCepUpdate">
+                <input required name="originCep" type="text" class="form-control cep" id="originCepUpdate">
               </div>
               <div class="form-group col-md-6">
                 <label for="originStreetUpdate">Rua</label>
-                <input name="originStreet" type="text" class="form-control" id="originStreetUpdate">
+                <input required name="originStreet" type="text" class="form-control" id="originStreetUpdate">
               </div>
               <div class="form-group col-md-3">
                 <label for="originNeighborhoodUpdate">Bairro</label>
-                <input name="originNeighborhood" type="text" class="form-control" id="originNeighborhoodUpdate">
+                <input required name="originNeighborhood" type="text" class="form-control" id="originNeighborhoodUpdate">
               </div>
             </div>
             <div class="form-row ">
               <div class="form-group col-md-3">
                 <label for="originNumberUpdate">Número</label>
-                <input name="originNumber" type="text" class="form-control" id="originNumberUpdate">
+                <input required name="originNumber" type="text" class="form-control" id="originNumberUpdate">
               </div>
               <div class="form-group col-md-3">
                 <label for="originComplementUpdate">Complemento</label>
                 <input name="originComplement" type="text" class="form-control" id="originComplementUpdate">
               </div>
               <div class="form-group col-md-6">
-                <label for="originReferenceUpdate">Complemento</label>
+                <label for="originReferenceUpdate">Referência</label>
                 <input name="originReference" type="text" class="form-control" id="originReferenceUpdate">
               </div>
             </div>
@@ -77,21 +82,21 @@
             <div class="form-row ">
               <div class="form-group col-md-3">
                 <label for="destinationCepUpdate">CEP</label>
-                <input name="destinationCep" type="text" class="form-control cep destinationCep" id="destinationCepUpdate">
+                <input required name="destinationCep" type="text" class="form-control cep destinationCep" id="destinationCepUpdate">
               </div>
               <div class="form-group col-md-6">
                 <label for="destinationStreetUpdate">Rua</label>
-                <input name="destinationStreet" type="text" class="form-control" id="destinationStreetUpdate">
+                <input required name="destinationStreet" type="text" class="form-control" id="destinationStreetUpdate">
               </div>
               <div class="form-group col-md-3">
                 <label for="destinationNeighborhoodUpdate">Bairro</label>
-                <input name="destinationNeighborhood" type="text" class="form-control" id="destinationNeighborhoodUpdate">
+                <input required name="destinationNeighborhood" type="text" class="form-control" id="destinationNeighborhoodUpdate">
               </div>
             </div>
             <div class="form-row ">
               <div class="form-group col-md-3">
                 <label for="destinationNumberUpdate">Número</label>
-                <input name="destinationNumber" type="text" class="form-control" id="destinationNumberUpdate">
+                <input required name="destinationNumber" type="text" class="form-control" id="destinationNumberUpdate">
               </div>
               <div class="form-group col-md-3">
                 <label for="destinationComplementUpdate">Complemento</label>
@@ -103,7 +108,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary" onclick="handleOrderUpdate()">Salvar alterações</button>
+              <button type="submit" class="btn btn-primary">Salvar alterações</button>
             </div>
           </form>
         </div>

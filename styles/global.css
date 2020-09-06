@@ -12,3 +12,7 @@
   max-width: 150px;
   object-fit: cover;
 }
+
+.icon-btn{
+  width: 20px;
+}

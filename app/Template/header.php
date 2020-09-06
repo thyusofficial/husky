@@ -44,11 +44,11 @@ require_once '../../lib/Config/config.php';
             <div class="form-row ">
               <div class="form-group col-md-6">
                 <label for="nameInput">Nome</label>
-                <input type="text" class="form-control" name="nameInput" id="nameInput">
+                <input required type="text" class="form-control" name="nameInput" id="nameInput">
               </div>
               <div class="form-group col-md-6">
                 <label for="phoneInput">Telefone</label>
-                <input type="text" class="form-control phone" name="phoneInput" id="phoneInput">
+                <input required type="text" class="form-control phone" name="phoneInput" id="phoneInput">
               </div>
             </div>
             <hr class="my-4">
@@ -56,28 +56,28 @@ require_once '../../lib/Config/config.php';
             <div class="form-row ">
               <div class="form-group col-md-3">
                 <label for="originCep">CEP</label>
-                <input type="text" class="form-control cep" name="originCep" id="originCep">
+                <input required type="text" class="form-control cep" name="originCep" id="originCep">
               </div>
               <div class="form-group col-md-6">
                 <label for="originStreet">Rua</label>
-                <input type="text" class="form-control" name="originStreet" id="originStreet">
+                <input required type="text" class="form-control" name="originStreet" id="originStreet">
               </div>
               <div class="form-group col-md-3">
                 <label for="originNeighborhood">Bairro</label>
-                <input type="text" class="form-control" name="originNeighborhood" id="originNeighborhood">
+                <input required type="text" class="form-control" name="originNeighborhood" id="originNeighborhood">
               </div>
             </div>
             <div class="form-row ">
               <div class="form-group col-md-3">
                 <label for="originNumber">Número</label>
-                <input type="text" class="form-control" name="originNumber" id="originNumber">
+                <input required type="text" class="form-control" name="originNumber" id="originNumber">
               </div>
               <div class="form-group col-md-3">
                 <label for="originComplement">Complemento</label>
                 <input type="text" class="form-control" name="originComplement" id="originComplement">
               </div>
               <div class="form-group col-md-6">
-                <label for="originReference">Complemento</label>
+                <label for="originReference">Referência</label>
                 <input type="text" class="form-control" name="originReference" id="originReference">
               </div>
             </div>
@@ -86,21 +86,21 @@ require_once '../../lib/Config/config.php';
             <div class="form-row ">
               <div class="form-group col-md-3">
                 <label for="destinationCep">CEP</label>
-                <input type="text" class="form-control cep" name="destinationCep" id="destinationCep">
+                <input required type="text" class="form-control cep" name="destinationCep" id="destinationCep">
               </div>
               <div class="form-group col-md-6">
                 <label for="destinationStreet">Rua</label>
-                <input type="text" class="form-control" name="destinationStreet" id="destinationStreet">
+                <input required type="text" class="form-control" name="destinationStreet" id="destinationStreet">
               </div>
               <div class="form-group col-md-3">
                 <label for="destinationNeighborhood">Bairro</label>
-                <input type="text" class="form-control" name="destinationNeighborhood" id="destinationNeighborhood">
+                <input required type="text" class="form-control" name="destinationNeighborhood" id="destinationNeighborhood">
               </div>
             </div>
             <div class="form-row ">
               <div class="form-group col-md-3">
                 <label for="destinationNumber">Número</label>
-                <input type="text" class="form-control" name="destinationNumber" id="destinationNumber">
+                <input required type="text" class="form-control" name="destinationNumber" id="destinationNumber">
               </div>
               <div class="form-group col-md-3">
                 <label for="destinationComplement">Complemento</label>
@@ -108,11 +108,11 @@ require_once '../../lib/Config/config.php';
               </div>
               <div class="form-group col-md-6">
                 <label for="destinationReference">Referência</label>
-                <input type="text" class="form-control" name="destinationReference" id="destinationReference" >
+                <input type="text" class="form-control" name="destinationReference" id="destinationReference">
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary" onclick="handleSubmitOrder()">Criar pedido</button>
+              <button type="submit" class="btn btn-primary">Criar pedido</button>
             </div>
           </form>
         </div>
