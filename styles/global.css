@@ -1,0 +1,14 @@
+.header-top {
+  height: 80px;
+}
+
+.header-top .header-top-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand img{
+  max-width: 150px;
+  object-fit: cover;
+}
